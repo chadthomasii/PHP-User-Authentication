@@ -1,3 +1,35 @@
+<?php
+
+//Get Database
+require("includes/database.php");
+
+  
+//Check to make sure that the users information was submitted to the form and not empty
+if(!empty($_POST['email']) && !empty($_POST['password']))
+{
+    //Stores result from database
+    $records = $conn->prepare('SELECT id,email,password FROM users WHERE email = :email');
+    
+    //Gets email from database
+    $records->bindParam(':email', $_POST['email']); 
+    $records->execute();
+    
+    //Gets email associative array
+    $results = $records->fetch(PDO::FETCH_ASSOC);
+    
+    //If there are results, and the password inputed matches, log the user in.
+    if(count($results) > 0 && password_verify($_POST['password'], $results['password']))
+    {
+        
+    }
+    
+}
+
+
+    
+?>
+
+
 <!DOCTYPE html>
 <html>
   <head>
