@@ -1,3 +1,19 @@
+<?php
+
+session_start();
+
+require 'includes/database.php';
+
+
+if(isset($_SESSION['user_id']))
+{
+    //Stores result from database
+    
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -15,9 +31,29 @@
       
       </div>
       
-      <h1>Please Login or Register</h1>
-      <a href="login.php">Login</a> or
-      <a href="register.php">Register</a> 
+      <br>
+      
+      <?php 
+      
+      if(isset($_SESSION['user_id']))
+      {
+        echo "Welcome, You are Logged in.";
+          
+        echo "<br><br><a href='logout.php'>Logout?</a>";
+      }
+      
+      else
+      {
+          
+          echo "<h1>Please Login or Register</h1>
+          <a href='login.php'>Login</a> or
+          <a href='register.php'>Register</a>";
+      }
+    
+    
+      ?>
+    
+      
   
   
   </body>

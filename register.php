@@ -1,6 +1,16 @@
 <?php
+
+session_start();
+//Make sure users is not already logged in
+if(isset($_SESSION['user_id']))
+{
+    header('Location: index.php');
+}
+//Make sure users is not already logged in
 //Get Database
 require("includes/database.php");
+
+
 
 //Empty error
 $message = '';
